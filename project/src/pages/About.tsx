@@ -77,11 +77,11 @@ function About() {
               transition={{ delay: 0.4, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="relative group">
-                <div className="absolute -inset-4 bg-primary/[0.03] rounded-[2rem] blur-3xl group-hover:bg-primary/[0.06] transition-opacity duration-700" />
+                <div className="absolute -inset-4 bg-primary/[0.03] rounded-[2rem] blur-3xl group-hover:bg-primary/[0.06] transition-opacity duration-700 pointer-events-none" />
                 <LightboxImage
                   src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773820163/96b743e4-fec7-444e-8c13-480035054509.png"
                   alt="Dazzling Xchange"
-                  className="w-full h-auto object-contain rounded-2xl"
+                  className="w-full max-h-[420px] object-contain rounded-2xl"
                 />
               </div>
             </motion.div>
@@ -95,19 +95,19 @@ function About() {
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <motion.div
-              className="space-y-6"
+              className="space-y-8"
               initial="hidden" whileInView="visible" viewport={{ once: true }}
             >
               <motion.span variants={fadeUp} custom={0} className="text-primary text-sm font-semibold tracking-widest uppercase">
                 {t('about.mission.label')}
               </motion.span>
-              <motion.h2 variants={fadeUp} custom={1} className="text-3xl lg:text-5xl font-bold text-white">
+              <motion.h2 variants={fadeUp} custom={1} className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-white">
                 {t('about.mission.title')} <span className="gradient-text">{t('about.mission.titleHighlight')}</span>
               </motion.h2>
-              <motion.p variants={fadeUp} custom={2} className="text-neutral-400 text-lg leading-relaxed">
+              <motion.p variants={fadeUp} custom={2} className="text-neutral-400 text-lg lg:text-xl leading-loose">
                 {t('about.mission.p1')}
               </motion.p>
-              <motion.p variants={fadeUp} custom={3} className="text-neutral-400 text-lg leading-relaxed">
+              <motion.p variants={fadeUp} custom={3} className="text-neutral-400 text-lg lg:text-xl leading-loose">
                 {t('about.mission.p2.start')} <span className="text-primary font-medium">{t('about.mission.p2.highlight')}</span>
               </motion.p>
             </motion.div>

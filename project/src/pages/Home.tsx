@@ -154,7 +154,7 @@ function Home() {
                     variants={fadeUp} custom={2}
                   >
                     <div className="relative group">
-                      <div className="absolute inset-0 bg-primary/5 rounded-3xl blur-2xl group-hover:bg-primary/10 transition-all duration-500" />
+                      <div className="absolute inset-0 bg-primary/5 rounded-3xl blur-2xl group-hover:bg-primary/10 transition-all duration-500 pointer-events-none" />
                       {i === 0 ? (
                         <LightboxImage
                           src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773818413/41a19b60-f520-4c1b-90dc-0b3b1629e0bd.png"
