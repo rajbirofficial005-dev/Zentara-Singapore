@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { ArrowRight, Smartphone, ScanFace, Wallet, Send, BarChart3, Users, HelpCircle, ChevronDown, MonitorPlay } from 'lucide-react';
 import Footer from '../components/Footer';
+import LightboxImage from '../components/LightboxImage';
 import { useSalesModalStore } from '../stores/salesModalStore';
 
 const fadeUp = {
@@ -72,27 +73,17 @@ function PortalWalkthrough() {
               </motion.div>
             </div>
 
-            {/* Right — Visual card that overlaps into next section */}
+            {/* Right — Image */}
             <motion.div
-              className="relative lg:translate-y-8"
+              className="relative self-start pt-8 lg:pt-16"
               initial={{ opacity: 0, y: 60 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="relative group">
-                <div className="absolute -inset-4 bg-primary/[0.03] rounded-[2rem] blur-3xl group-hover:bg-primary/[0.06] transition-opacity duration-700" />
-                <div className="relative glass-card rounded-3xl overflow-hidden min-h-[460px] flex items-center justify-center">
-                  <div className="text-center space-y-4 p-12">
-                    <div className="relative mx-auto w-36 h-36">
-                      <div className="absolute inset-0 bg-primary/[0.06] rounded-2xl rotate-6" />
-                      <div className="absolute inset-0 bg-primary/[0.06] rounded-2xl -rotate-6" />
-                      <div className="relative bg-neutral-900/80 rounded-2xl p-6 flex items-center justify-center h-full border border-neutral-800">
-                        <MonitorPlay className="w-14 h-14 text-primary/30 group-hover:text-primary/50 transition-colors duration-500" strokeWidth={1.5} />
-                      </div>
-                    </div>
-                    <p className="text-neutral-700 text-sm font-medium">{t('walkthrough.hero.placeholder')}</p>
-                  </div>
-                </div>
-              </div>
+              <LightboxImage
+                src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773828707/1d1fe6b4-0387-400e-90d7-bb677e79578f.png"
+                alt="Portal Walkthrough"
+                className="w-full h-auto object-contain rounded-2xl"
+              />
             </motion.div>
           </div>
         </div>
@@ -113,29 +104,24 @@ function PortalWalkthrough() {
 
               <div className={`py-20 lg:py-28 px-6 lg:px-16 ${idx % 2 === 0 ? '' : 'bg-neutral-950/50'}`}>
                 <div className="max-w-6xl mx-auto">
-                  <motion.div
-                    className="mb-12"
-                    initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
-                  >
-                    <motion.div variants={fadeUp} custom={0} className="flex items-center gap-4 mb-4">
-                      <span className="text-6xl lg:text-7xl font-bold text-white">{step.num}</span>
-                      <div>
-                        <h2 className="text-3xl lg:text-4xl font-bold text-white">{step.title}</h2>
-                        <p className="text-primary text-base font-medium mt-1">{step.subtitle}</p>
-                      </div>
-                    </motion.div>
-                  </motion.div>
-
-                  <div className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-16`}>
+                  <div className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-16 items-start`}>
                     <motion.div
                       className="flex-1 space-y-6"
                       initial="hidden" whileInView="visible" viewport={{ once: true }}
                     >
-                      <motion.p variants={fadeUp} custom={0} className="text-neutral-300 text-lg leading-relaxed">
+                      <motion.div variants={fadeUp} custom={0} className="flex items-center gap-4 mb-2">
+                        <span className="text-6xl lg:text-7xl font-bold text-white">{step.num}</span>
+                        <div>
+                          <h2 className="text-3xl lg:text-4xl font-bold text-white">{step.title}</h2>
+                          <p className="text-primary text-base font-medium mt-1">{step.subtitle}</p>
+                        </div>
+                      </motion.div>
+
+                      <motion.p variants={fadeUp} custom={1} className="text-neutral-300 text-lg leading-relaxed">
                         {step.description}
                       </motion.p>
 
-                      <motion.div variants={fadeUp} custom={1} className="space-y-3 pt-2">
+                      <motion.div variants={fadeUp} custom={2} className="space-y-3 pt-2">
                         {step.highlights.map((h, hi) => (
                           <div key={hi} className="flex items-start gap-3">
                             <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
@@ -149,24 +135,66 @@ function PortalWalkthrough() {
                       className="flex-1 min-w-0"
                       initial="hidden" whileInView="visible" viewport={{ once: true }}
                     >
-                      <motion.div
-                        variants={fadeUp}
-                        custom={2}
-                        className="w-full glass-card rounded-3xl overflow-hidden group hover:border-primary/20 transition-all duration-300 min-h-[460px] flex flex-col"
-                      >
-                        <div className="flex-1 min-h-[460px] bg-neutral-900/60 flex items-center justify-center relative">
-                          <div className="text-center p-8">
-                            <Icon className="w-16 h-16 text-neutral-600 mx-auto mb-4 group-hover:text-primary/40 transition-colors" strokeWidth={1} />
-                            <p className="text-neutral-500 text-sm font-medium">{t('walkthrough.screenshot')}</p>
+                      <motion.div variants={fadeUp} custom={2}>
+                        {idx === 0 ? (
+                          <LightboxImage
+                            src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773829022/e7d1e93c-3b3d-4831-a6ce-2f38deb547c4.png"
+                            alt={step.title}
+                            className="w-full h-auto object-contain rounded-2xl"
+                          />
+                        ) : idx === 1 ? (
+                          <LightboxImage
+                            src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773819247/91a45658-f438-458c-8de7-bf853ec061d0.png"
+                            alt={step.title}
+                            className="w-full h-auto object-contain rounded-2xl"
+                          />
+                        ) : idx === 2 ? (
+                          <LightboxImage
+                            src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773830512/977f4651-0cb4-4d76-a855-4247155c5566.png"
+                            alt={step.title}
+                            className="w-full h-auto object-contain rounded-2xl"
+                          />
+                        ) : idx === 3 ? (
+                          <LightboxImage
+                            src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773830768/7f5340f2-ba9c-4cc9-a269-edc5f5713114.png"
+                            alt={step.title}
+                            className="w-full h-auto object-contain rounded-2xl"
+                          />
+                        ) : idx === 4 ? (
+                          <LightboxImage
+                            src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773830998/6b22a935-3480-4db0-a652-c31f8e253a10.png"
+                            alt={step.title}
+                            className="w-full h-auto object-contain rounded-2xl"
+                          />
+                        ) : idx === 5 ? (
+                          <LightboxImage
+                            src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773831232/a30b7491-49aa-4a98-a0f6-5b8558a24004.png"
+                            alt={step.title}
+                            className="w-full h-auto object-contain rounded-2xl"
+                          />
+                        ) : idx === 6 ? (
+                          <LightboxImage
+                            src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773831488/a802cae2-ebaf-4a97-8f7c-8ba787726e0b.png"
+                            alt={step.title}
+                            className="w-full h-auto object-contain rounded-2xl"
+                          />
+                        ) : (
+                          <div className="w-full glass-card rounded-3xl overflow-hidden group hover:border-primary/20 transition-all duration-300 min-h-[460px] flex flex-col">
+                            <div className="flex-1 min-h-[460px] bg-neutral-900/60 flex items-center justify-center relative">
+                              <div className="text-center p-8">
+                                <Icon className="w-16 h-16 text-neutral-600 mx-auto mb-4 group-hover:text-primary/40 transition-colors" strokeWidth={1} />
+                                <p className="text-neutral-500 text-sm font-medium">{t('walkthrough.screenshot')}</p>
+                              </div>
+                              <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-neutral-700/50 rounded-tl" />
+                              <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-neutral-700/50 rounded-tr" />
+                              <div className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-neutral-700/50 rounded-bl" />
+                              <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-neutral-700/50 rounded-br" />
+                            </div>
+                            <div className="px-4 py-3 border-t border-neutral-800/50">
+                              <p className="text-neutral-500 text-sm font-medium">{step.screenshotLabel}</p>
+                            </div>
                           </div>
-                          <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-neutral-700/50 rounded-tl" />
-                          <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-neutral-700/50 rounded-tr" />
-                          <div className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-neutral-700/50 rounded-bl" />
-                          <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-neutral-700/50 rounded-br" />
-                        </div>
-                        <div className="px-4 py-3 border-t border-neutral-800/50">
-                          <p className="text-neutral-500 text-sm font-medium">{step.screenshotLabel}</p>
-                        </div>
+                        )}
                       </motion.div>
                     </motion.div>
                   </div>

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, CheckCircle2, Smartphone, ScanFace, Wallet, Send, BarChart3, Users, Building, CreditCard, ChevronDown } from 'lucide-react';
 import Footer from '../components/Footer';
+import LightboxImage from '../components/LightboxImage';
 import { useSalesModalStore } from '../stores/salesModalStore';
 
 const fadeUp = {
@@ -97,28 +98,17 @@ function Services() {
               </motion.div>
             </div>
 
-            {/* Right — Visual card */}
+            {/* Right — Image */}
             <motion.div
-              className="relative lg:translate-y-8"
+              className="relative self-start pt-8 lg:pt-16"
               initial={{ opacity: 0, y: 60 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="relative group">
-                <div className="absolute -inset-4 bg-primary/[0.03] rounded-[2rem] blur-3xl group-hover:bg-primary/[0.06] transition-opacity duration-700" />
-                <div className="relative glass-card rounded-3xl overflow-hidden min-h-[460px] flex items-center justify-center">
-                  <div className="text-center space-y-6 p-12">
-                    <div className="relative mx-auto w-40 h-40">
-                      <div className="absolute inset-0 bg-primary/[0.06] rounded-full scale-150 animate-float-delayed" />
-                      <div className="absolute inset-2 bg-primary/[0.05] rounded-2xl rotate-6" />
-                      <div className="absolute inset-2 bg-primary/[0.05] rounded-2xl -rotate-6" />
-                      <div className="relative bg-neutral-900/80 rounded-2xl p-6 flex items-center justify-center h-full border border-neutral-800">
-                        <Building className="w-16 h-16 text-primary/30 group-hover:text-primary/50 transition-colors duration-500" strokeWidth={1.5} />
-                      </div>
-                    </div>
-                    <p className="text-neutral-700 text-sm font-medium">{t('services.hero.placeholder')}</p>
-                  </div>
-                </div>
-              </div>
+              <LightboxImage
+                src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773821782/2b37e940-9f0d-4e87-8da7-28d23fcb6595.png"
+                alt="Our Services"
+                className="w-full h-auto object-contain rounded-2xl"
+              />
             </motion.div>
           </div>
         </div>
@@ -205,33 +195,23 @@ function Services() {
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="flex flex-col lg:flex-row gap-10 items-start">
-                <div className="flex-1">
-                  <div className="flex items-center gap-4 mb-6">
-                    <ActiveIcon className="w-10 h-10 text-primary" strokeWidth={1.5} />
-                    <div>
-                      <h3 className="text-2xl font-bold text-white">{active.title}</h3>
-                      <span className="inline-block px-3 py-0.5 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20 mt-1">
-                        {active.highlight}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="space-y-4">
-                    {active.features.map((f, fi) => (
-                      <div key={fi} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" strokeWidth={1.5} />
-                        <span className="text-neutral-300 text-base">{f}</span>
-                      </div>
-                    ))}
+              <div className="flex flex-col gap-6">
+                <div className="flex items-center gap-4">
+                  <ActiveIcon className="w-10 h-10 text-primary" strokeWidth={1.5} />
+                  <div>
+                    <h3 className="text-2xl font-bold text-white">{active.title}</h3>
+                    <span className="inline-block px-3 py-0.5 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20 mt-1">
+                      {active.highlight}
+                    </span>
                   </div>
                 </div>
-                <div className="flex-1 w-full">
-                  <div className="glass-card rounded-2xl p-8 flex items-center justify-center min-h-[260px]">
-                    <div className="text-center">
-                      <ActiveIcon className="w-16 h-16 text-neutral-700 mx-auto mb-3" strokeWidth={1} />
-                      <p className="text-neutral-600 text-sm">{t('services.payment.preview')}</p>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {active.features.map((f, fi) => (
+                    <div key={fi} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" strokeWidth={1.5} />
+                      <span className="text-neutral-300 text-base">{f}</span>
                     </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </motion.div>
@@ -252,19 +232,19 @@ function Services() {
             </motion.h2>
           </motion.div>
 
-          <div className="space-y-28">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {/* Receiver Management */}
             <motion.div
-              className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center"
+              className="space-y-5"
               initial="hidden" whileInView="visible" viewport={{ once: true }}
             >
-              <motion.div className="flex-1 space-y-5" variants={fadeUp} custom={0}>
-                <Users className="w-10 h-10 text-primary" strokeWidth={1.5} />
-                <h3 className="text-2xl lg:text-4xl font-bold text-white">{t('services.capabilities.receivers.title')}</h3>
-                <p className="text-neutral-400 text-lg leading-relaxed">
+              <motion.div variants={fadeUp} custom={0}>
+                <Users className="w-10 h-10 text-primary mb-4" strokeWidth={1.5} />
+                <h3 className="text-xl lg:text-2xl font-bold text-white mb-3">{t('services.capabilities.receivers.title')}</h3>
+                <p className="text-neutral-400 leading-relaxed">
                   {t('services.capabilities.receivers.desc')}
                 </p>
-                <div className="flex flex-wrap gap-3 pt-2">
+                <div className="flex flex-wrap gap-2 pt-4">
                   {t('services.capabilities.receivers.tags').split(',').map(tag => (
                     <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-neutral-900 text-neutral-400 border border-neutral-800">
                       {tag}
@@ -272,25 +252,20 @@ function Services() {
                   ))}
                 </div>
               </motion.div>
-              <motion.div className="flex-1 w-full" variants={fadeUp} custom={2}>
-                <div className="glass-card rounded-3xl p-12 flex items-center justify-center min-h-[280px] group hover:border-primary/20 transition-all duration-300">
-                  <Users className="w-20 h-20 text-primary/30 group-hover:text-primary/60 transition-colors" strokeWidth={1} />
-                </div>
-              </motion.div>
             </motion.div>
 
             {/* Transaction Tracking */}
             <motion.div
-              className="flex flex-col lg:flex-row-reverse gap-12 lg:gap-20 items-center"
+              className="space-y-5"
               initial="hidden" whileInView="visible" viewport={{ once: true }}
             >
-              <motion.div className="flex-1 space-y-5" variants={fadeUp} custom={0}>
-                <BarChart3 className="w-10 h-10 text-primary" strokeWidth={1.5} />
-                <h3 className="text-2xl lg:text-4xl font-bold text-white">{t('services.capabilities.tracking.title')}</h3>
-                <p className="text-neutral-400 text-lg leading-relaxed">
+              <motion.div variants={fadeUp} custom={1}>
+                <BarChart3 className="w-10 h-10 text-primary mb-4" strokeWidth={1.5} />
+                <h3 className="text-xl lg:text-2xl font-bold text-white mb-3">{t('services.capabilities.tracking.title')}</h3>
+                <p className="text-neutral-400 leading-relaxed">
                   {t('services.capabilities.tracking.desc')}
                 </p>
-                <div className="flex flex-wrap gap-3 pt-2">
+                <div className="flex flex-wrap gap-2 pt-4">
                   {t('services.capabilities.tracking.tags').split(',').map(tag => (
                     <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-neutral-900 text-neutral-400 border border-neutral-800">
                       {tag}
@@ -298,35 +273,25 @@ function Services() {
                   ))}
                 </div>
               </motion.div>
-              <motion.div className="flex-1 w-full" variants={fadeUp} custom={2}>
-                <div className="glass-card rounded-3xl p-12 flex items-center justify-center min-h-[280px] group hover:border-primary/20 transition-all duration-300">
-                  <BarChart3 className="w-20 h-20 text-primary/30 group-hover:text-primary/60 transition-colors" strokeWidth={1} />
-                </div>
-              </motion.div>
             </motion.div>
 
             {/* Wallet Management */}
             <motion.div
-              className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center"
+              className="space-y-5"
               initial="hidden" whileInView="visible" viewport={{ once: true }}
             >
-              <motion.div className="flex-1 space-y-5" variants={fadeUp} custom={0}>
-                <Wallet className="w-10 h-10 text-primary" strokeWidth={1.5} />
-                <h3 className="text-2xl lg:text-4xl font-bold text-white">{t('services.capabilities.wallet.title')}</h3>
-                <p className="text-neutral-400 text-lg leading-relaxed">
+              <motion.div variants={fadeUp} custom={2}>
+                <Wallet className="w-10 h-10 text-primary mb-4" strokeWidth={1.5} />
+                <h3 className="text-xl lg:text-2xl font-bold text-white mb-3">{t('services.capabilities.wallet.title')}</h3>
+                <p className="text-neutral-400 leading-relaxed">
                   {t('services.capabilities.wallet.desc')}
                 </p>
-                <div className="flex flex-wrap gap-3 pt-2">
+                <div className="flex flex-wrap gap-2 pt-4">
                   {t('services.capabilities.wallet.tags').split(',').map(tag => (
                     <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-neutral-900 text-neutral-400 border border-neutral-800">
                       {tag}
                     </span>
                   ))}
-                </div>
-              </motion.div>
-              <motion.div className="flex-1 w-full" variants={fadeUp} custom={2}>
-                <div className="glass-card rounded-3xl p-12 flex items-center justify-center min-h-[280px] group hover:border-primary/20 transition-all duration-300">
-                  <Wallet className="w-20 h-20 text-primary/30 group-hover:text-primary/60 transition-colors" strokeWidth={1} />
                 </div>
               </motion.div>
             </motion.div>

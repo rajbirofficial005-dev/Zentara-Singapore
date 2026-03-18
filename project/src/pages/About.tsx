@@ -1,6 +1,8 @@
 import React from 'react';
+import LightboxImage from '../components/LightboxImage';
 import { useTranslation } from 'react-i18next';
 import { Shield, Zap, Users, Globe, ChevronDown } from 'lucide-react';
+
 import { motion } from 'framer-motion';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
@@ -70,25 +72,17 @@ function About() {
 
             {/* Right — Visual card that overlaps into next section */}
             <motion.div
-              className="relative lg:translate-y-8"
+              className="relative self-start pt-8 lg:pt-16"
               initial={{ opacity: 0, y: 60 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="relative group">
                 <div className="absolute -inset-4 bg-primary/[0.03] rounded-[2rem] blur-3xl group-hover:bg-primary/[0.06] transition-opacity duration-700" />
-                <div className="relative glass-card rounded-3xl overflow-hidden min-h-[460px] flex items-center justify-center">
-                  <div className="text-center space-y-6 p-12">
-                    <div className="relative mx-auto w-40 h-40">
-                      <div className="absolute inset-0 bg-primary/[0.06] rounded-full scale-150 animate-float" />
-                      <div className="absolute inset-0 bg-primary/[0.04] rounded-2xl rotate-12 translate-x-3 -translate-y-2" />
-                      <div className="absolute inset-0 bg-primary/[0.04] rounded-2xl -rotate-12 -translate-x-3 translate-y-2" />
-                      <div className="relative bg-neutral-900/80 rounded-2xl p-6 flex items-center justify-center h-full border border-neutral-800">
-                        <Globe className="w-16 h-16 text-primary/30 group-hover:text-primary/50 transition-colors duration-500" strokeWidth={1.5} />
-                      </div>
-                    </div>
-                    <p className="text-neutral-700 text-sm font-medium">{t('about.hero.placeholder')}</p>
-                  </div>
-                </div>
+                <LightboxImage
+                  src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773820163/96b743e4-fec7-444e-8c13-480035054509.png"
+                  alt="Dazzling Xchange"
+                  className="w-full h-auto object-contain rounded-2xl"
+                />
               </div>
             </motion.div>
           </div>
