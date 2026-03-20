@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useCallback } from 'react';
-import { countries, iso2ToIso3, type Country } from '../utils/countries';
+import { useTranslation } from 'react-i18next';
+import { countries, type Country } from '../utils/countries';
 
 /* ---------- Types ---------- */
 export interface PhoneValue {
@@ -13,6 +14,7 @@ interface Props {
 }
 /* ---------- Component ---------- */
 const PhoneField: React.FC<Props> = ({ value, onChange }) => {
+  const { t } = useTranslation();
   const [search, setSearch] = useState('');
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -54,10 +56,10 @@ const PhoneField: React.FC<Props> = ({ value, onChange }) => {
           {selectedCountry ? (
             <>
               <span className="text-white">{selectedCountry.dial}</span>
-              <span className="ml-2 text-white font-semibold">{iso2ToIso3[selectedCountry.code] || selectedCountry.code}</span>
+              <span className="ml-2 text-white font-semibold">{selectedCountry.code}</span>
             </>
           ) : (
-            <span className="text-gray-400">+93 AFG</span>
+            <span className="text-gray-400">+65 SG</span>
           )}
           <span className="ml-auto text-gray-400">▼</span>
         </div>
@@ -66,13 +68,13 @@ const PhoneField: React.FC<Props> = ({ value, onChange }) => {
             <input
               type="text"
               className="w-full px-3 py-2 bg-[#23272a] text-white border-b border-[#374151] rounded-t-lg focus:outline-none"
-              placeholder="Search country or code..."
+              placeholder={t('phone.searchPlaceholder')}
               value={search}
               onChange={e => setSearch(e.target.value)}
               autoFocus
             />
             {filteredCountries.length === 0 && (
-              <div className="px-3 py-2 text-gray-400">No countries found</div>
+              <div className="px-3 py-2 text-gray-400">{t('phone.noCountries')}</div>
             )}
             {filteredCountries.map(c => (
               <div
@@ -94,7 +96,7 @@ const PhoneField: React.FC<Props> = ({ value, onChange }) => {
         inputMode="numeric"
         pattern="[0-9]*"
         required
-        placeholder="Phone Number *"
+        placeholder={t('modal.sales.placeholderPhone')}
         value={value.number}
         onChange={handleNum}
         className="flex-1 form-input px-4 bg-[#23272a] text-white border-[#374151] rounded-lg"

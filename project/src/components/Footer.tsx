@@ -26,7 +26,7 @@ function Footer() {
               </li>
               <li>
                 <Link to="/walkthrough" className="footer-link">
-                  Portal & App Walkthrough
+                  {t('footer.walkthrough')}
                 </Link>
               </li>
             </ul>
@@ -72,10 +72,10 @@ function Footer() {
           {/* Left: long legal disclaimer */}
           <div className="text-gray-500 text-xs space-y-4 max-h-40 overflow-y-auto">
             <p>
-              Dazzling Xchange is a licensed remittance service provider committed to regulatory compliance, secure transactions, and protecting your data with bank-grade encryption. We take your trust seriously, every step of the way.
+              {t('footer.disclaimer1')}
             </p>
             <p>
-              Dazzling Xchange Pte Ltd UEN 201935477R, Registered office: 11 Collyer Quay #02-34 The Arcade Singapore 049317. Dazzling Xchange is authorised and regulated by the Monetary Authority of Singapore as Major payment institution, license number PS20200465. All transactions are subject to our terms and conditions and applicable regulatory requirements.
+              {t('footer.disclaimer2')}
             </p>
           </div>
 

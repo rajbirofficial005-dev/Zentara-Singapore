@@ -81,7 +81,7 @@ function PortalWalkthrough() {
             >
               <LightboxImage
                 src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773828707/1d1fe6b4-0387-400e-90d7-bb677e79578f.png"
-                alt="Portal Walkthrough"
+                alt={t('walkthrough.hero.imageAlt')}
                 className="w-full h-auto object-contain rounded-2xl"
               />
             </motion.div>

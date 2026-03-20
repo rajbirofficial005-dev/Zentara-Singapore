@@ -4,7 +4,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-http-backend';
 
 // Cache version - increment this when locale files are updated
-const LOCALE_VERSION = '2026-02-14-v4';
+const LOCALE_VERSION = '2026-03-20-v4';
 
 const initPromise = i18n
   .use(Backend)

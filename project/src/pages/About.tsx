@@ -80,7 +80,7 @@ function About() {
                 <div className="absolute -inset-4 bg-primary/[0.03] rounded-[2rem] blur-3xl group-hover:bg-primary/[0.06] transition-opacity duration-700 pointer-events-none" />
                 <LightboxImage
                   src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773820163/96b743e4-fec7-444e-8c13-480035054509.png"
-                  alt="Dazzling Xchange"
+                  alt={t('about.hero.imageAlt')}
                   className="w-full max-h-[420px] object-contain rounded-2xl"
                 />
               </div>

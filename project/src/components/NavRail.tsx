@@ -16,10 +16,10 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { path: '/', icon: Home, label: 'Home', title: 'Home' },
-  { path: '/services', icon: Briefcase, label: 'Services', title: 'Services' },
-  { path: '/about', icon: UserCircle, label: 'About', title: 'About' },
-  { path: '/articles', icon: BookOpen, label: 'Articles', title: 'Articles' }
+  { path: '/', icon: Home, label: 'nav.home', title: 'nav.home' },
+  { path: '/services', icon: Briefcase, label: 'nav.services', title: 'nav.services' },
+  { path: '/about', icon: UserCircle, label: 'nav.about', title: 'nav.about' },
+  { path: '/articles', icon: BookOpen, label: 'nav.articles', title: 'nav.articles' }
 ];
 
 const NavRail: React.FC<NavRailProps> = React.memo(({ onOpenSettings }) => {
@@ -82,8 +82,8 @@ const NavRail: React.FC<NavRailProps> = React.memo(({ onOpenSettings }) => {
                       : 'text-neutral-400 hover:text-primary hover:bg-neutral-800'
                     }
                   `}
-                  title={item.title}
-                  aria-label={item.title}
+                  title={t(item.title)}
+                  aria-label={t(item.title)}
                 >
                   <IconComponent 
                     className={`w-6 h-6 flex-shrink-0 transition-colors duration-200`} 
@@ -99,7 +99,7 @@ const NavRail: React.FC<NavRailProps> = React.memo(({ onOpenSettings }) => {
                         transition={{ duration: 0.2, ease: 'easeOut' }}
                         className="ml-3 font-medium"
                       >
-                        {item.label}
+                        {t(item.label)}
                       </motion.span>
                     )}
                   </AnimatePresence>
@@ -150,8 +150,8 @@ const NavRail: React.FC<NavRailProps> = React.memo(({ onOpenSettings }) => {
           <Link 
             to="/"
             className="flex items-center justify-center w-12 h-12 mx-auto rounded-lg hover:bg-neutral-800 transition-colors duration-200 group"
-            title="Home"
-            aria-label="Go to Home"
+            title={t('nav.home')}
+            aria-label={t('nav.logoAria')}
           >
             <img 
               src="https://i.ibb.co/VcB3xpz1/Untitled-design-2025-07-02-T031441-104.png" 
@@ -179,7 +179,7 @@ const NavRail: React.FC<NavRailProps> = React.memo(({ onOpenSettings }) => {
                   : 'text-neutral-400 hover:text-primary'
                 }
               `}
-              aria-label={item.title}
+              aria-label={t(item.title)}
             >
               <IconComponent className="w-6 h-6 transition-colors duration-200" />
             </Link>
@@ -189,7 +189,7 @@ const NavRail: React.FC<NavRailProps> = React.memo(({ onOpenSettings }) => {
         <button
           onClick={onOpenSettings}
           className="flex flex-col items-center justify-center h-12 px-2 rounded-lg text-neutral-400 hover:text-primary transition-colors duration-200"
-          aria-label="Settings"
+          aria-label={t('nav.settingsAria')}
         >
           <Settings className="w-6 h-6 transition-colors duration-200" />
         </button>

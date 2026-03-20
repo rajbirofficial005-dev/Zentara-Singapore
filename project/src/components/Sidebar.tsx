@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Home, UserCircle, Briefcase, BookOpen, Settings, MonitorPlay } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { Sidebar, SidebarBody, SidebarLink } from './ui/sidebar';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -9,88 +10,88 @@ interface SidebarProps {
   onOpenSettings: () => void;
 }
 
-interface SidebarProps {
-  onOpenSettings: () => void;
-}
-
 function SidebarComponent({ onOpenSettings }: SidebarProps) {
+  const { t } = useTranslation();
   const location = useLocation();
   const [open, setOpen] = useState(false);
 
   const isActive = (path: string) => location.pathname === path;
 
-  const links = [
-    {
-      label: 'Home',
-      href: '/',
-      icon: (
-        <Home 
-          className={cn(
-            'w-8 h-8 transition-colors duration-200',
-            isActive('/') 
-              ? 'text-[#16d68f]' 
-              : 'text-white group-hover/sidebar:text-[#16d68f]'
-          )}
-        />
-      )
-    },
-    {
-      label: 'About',
-      href: '/about',
-      icon: (
-        <UserCircle 
-          className={cn(
-            'w-8 h-8 transition-colors duration-200',
-            isActive('/about') 
-              ? 'text-[#16d68f]' 
-              : 'text-white group-hover/sidebar:text-[#16d68f]'
-          )}
-        />
-      )
-    },
-    {
-      label: 'Services',
-      href: '/services',
-      icon: (
-        <Briefcase 
-          className={cn(
-            'w-8 h-8 transition-colors duration-200',
-            isActive('/services') 
-              ? 'text-[#16d68f]' 
-              : 'text-white group-hover/sidebar:text-[#16d68f]'
-          )}
-        />
-      )
-    },
-    {
-      label: 'Walkthrough',
-      href: '/walkthrough',
-      icon: (
-        <MonitorPlay 
-          className={cn(
-            'w-8 h-8 transition-colors duration-200',
-            isActive('/walkthrough') 
-              ? 'text-[#16d68f]' 
-              : 'text-white group-hover/sidebar:text-[#16d68f]'
-          )}
-        />
-      )
-    },
-    {
-      label: 'Articles',
-      href: '/articles',
-      icon: (
-        <BookOpen 
-          className={cn(
-            'w-8 h-8 transition-colors duration-200',
-            isActive('/articles') || location.pathname.startsWith('/articles/')
-              ? 'text-[#16d68f]' 
-              : 'text-white group-hover/sidebar:text-[#16d68f]'
-          )}
-        />
-      )
-    }
-  ];
+  const links = useMemo(
+    () => [
+      {
+        label: t('nav.home'),
+        href: '/',
+        icon: (
+          <Home
+            className={cn(
+              'w-8 h-8 transition-colors duration-200',
+              isActive('/')
+                ? 'text-[#16d68f]'
+                : 'text-white group-hover/sidebar:text-[#16d68f]'
+            )}
+          />
+        ),
+      },
+      {
+        label: t('nav.about'),
+        href: '/about',
+        icon: (
+          <UserCircle
+            className={cn(
+              'w-8 h-8 transition-colors duration-200',
+              isActive('/about')
+                ? 'text-[#16d68f]'
+                : 'text-white group-hover/sidebar:text-[#16d68f]'
+            )}
+          />
+        ),
+      },
+      {
+        label: t('nav.services'),
+        href: '/services',
+        icon: (
+          <Briefcase
+            className={cn(
+              'w-8 h-8 transition-colors duration-200',
+              isActive('/services')
+                ? 'text-[#16d68f]'
+                : 'text-white group-hover/sidebar:text-[#16d68f]'
+            )}
+          />
+        ),
+      },
+      {
+        label: t('nav.walkthroughMenu'),
+        href: '/walkthrough',
+        icon: (
+          <MonitorPlay
+            className={cn(
+              'w-8 h-8 transition-colors duration-200',
+              isActive('/walkthrough')
+                ? 'text-[#16d68f]'
+                : 'text-white group-hover/sidebar:text-[#16d68f]'
+            )}
+          />
+        ),
+      },
+      {
+        label: t('nav.articles'),
+        href: '/articles',
+        icon: (
+          <BookOpen
+            className={cn(
+              'w-8 h-8 transition-colors duration-200',
+              isActive('/articles') || location.pathname.startsWith('/articles/')
+                ? 'text-[#16d68f]'
+                : 'text-white group-hover/sidebar:text-[#16d68f]'
+            )}
+          />
+        ),
+      },
+    ],
+    [t, location.pathname]
+  );
 
   return (
     <Sidebar open={open} setOpen={setOpen}>
@@ -119,7 +120,7 @@ function SidebarComponent({ onOpenSettings }: SidebarProps) {
               }}
               className="text-white text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
             >
-              Settings
+              {t('settings.title')}
             </motion.span>
           </button>
         </div>

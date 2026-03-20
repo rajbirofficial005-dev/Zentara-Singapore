@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Loader } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { useSalesModalStore } from '../stores/salesModalStore';
 import PhoneField, { PhoneValue } from './PhoneField';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
@@ -26,8 +27,9 @@ const getCountryFromDialCode = (dialCode: string): string => {
 };
 
 const SalesModal = () => {
+  const { t } = useTranslation();
   const { open, closeModal } = useSalesModalStore();
-  const [phone, setPhone] = useState<PhoneValue>({ dialCode: '', number: '' });
+  const [phone, setPhone] = useState<PhoneValue>({ dialCode: '+65', number: '' });
   
   // Initial form state
   const initialFormData = {
@@ -53,7 +55,7 @@ const SalesModal = () => {
       country: '' // Keep empty on reset
     };
     setFormData(resetFormData);
-    setPhone({ dialCode: '', number: '' }); // Reset to empty dial code
+    setPhone({ dialCode: '+65', number: '' }); // Reset to Singapore default
     setSubmitted(false);
     setError(null);
     console.log('Form cache cleared and reset to initial state');
@@ -109,7 +111,8 @@ const SalesModal = () => {
     setError(null);
     
     try {
-      const fullPhone = `+${phone.dialCode}${phone.number}`;
+      const dial = phone.dialCode.startsWith('+') ? phone.dialCode : `+${phone.dialCode}`;
+      const fullPhone = `${dial}${phone.number}`;
       const submissionData = {
         ...formData,
         phone: fullPhone,
@@ -123,7 +126,7 @@ const SalesModal = () => {
       setSubmitted(true);
     } catch (err) {
       console.error('Error saving form submission:', err);
-      setError('Failed to submit form. Please try again.');
+      setError(t('modal.sales.error'));
     } finally {
       setLoading(false);
     }
@@ -165,15 +168,15 @@ const SalesModal = () => {
                   closeModal();
                 }}
                 className="absolute top-4 right-4 text-gray-400 hover:text-white hover:bg-neutral-700 rounded-full p-2 transition-all duration-150 z-50 focus:outline-none focus:ring-2 focus:ring-primary active:scale-95"
-                aria-label="Close modal"
+                aria-label={t('modal.sales.closeAria')}
               >
                 <X className="w-5 h-5" />
               </button>
 
               {submitted ? (
                 <div className="flex flex-col items-center justify-center min-h-[300px] text-center">
-                  <h2 className="text-2xl font-bold text-white mb-4">Thank you for reaching out!</h2>
-                  <p className="text-gray-300 mb-8">Our team will get back to you shortly to assist with your enquiry.</p>
+                  <h2 className="text-2xl font-bold text-white mb-4">{t('modal.sales.thankYouTitle')}</h2>
+                  <p className="text-gray-300 mb-8">{t('modal.sales.thankYouDesc')}</p>
                   <button
                     type="button"
                     onClick={() => { 
@@ -182,13 +185,13 @@ const SalesModal = () => {
                     }}
                     className="w-full bg-brand-500 text-neutral-900 rounded-lg px-4 py-3 font-medium hover:bg-brand-600 transition-colors duration-200"
                   >
-                    Close
+                    {t('modal.sales.close')}
                   </button>
                 </div>
               ) : (
                 <>
                   <h2 className="text-xl font-semibold mb-6 text-white pr-8">
-                    Contact Us
+                    {t('modal.sales.title')}
                   </h2>
                   {/* Form fields */}
                   <div className="space-y-4">
@@ -197,7 +200,7 @@ const SalesModal = () => {
                       value={formData.name}
                       onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                       required
-                      placeholder="Full Name *"
+                      placeholder={t('modal.sales.placeholderName')}
                       className="form-input"
                     />
                     <input
@@ -205,7 +208,7 @@ const SalesModal = () => {
                       value={formData.email}
                       onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                       required
-                      placeholder="Email Address *"
+                      placeholder={t('modal.sales.placeholderEmail')}
                       className="form-input"
                     />
                     <PhoneField value={phone} onChange={setPhone} />
@@ -213,22 +216,22 @@ const SalesModal = () => {
                       type="text"
                       value={formData.company}
                       onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))}
-                      placeholder="Company"
+                      placeholder={t('modal.sales.placeholderCompany')}
                       className="form-input"
                     />
                     <input
                       type="text"
                       value={formData.country}
                       onChange={(e) => setFormData(prev => ({ ...prev, country: e.target.value }))}
-                      placeholder="Country"
+                      placeholder={t('modal.sales.placeholderCountry')}
                       className="form-input"
-                      title="Country will be auto-detected when you select a phone code"
+                      title={t('modal.sales.countryHint')}
                     />
                     <textarea
                       value={formData.message}
                       onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
                       rows={3}
-                      placeholder="Message"
+                      placeholder={t('modal.sales.placeholderMessage')}
                       className="form-input resize-none"
                     />
                     {error && (
@@ -240,7 +243,7 @@ const SalesModal = () => {
                         onClick={clearForm}
                         className="flex-1 py-3 rounded-lg bg-neutral-700 font-medium text-white hover:bg-neutral-600 transition-colors duration-200"
                       >
-                        Clear Form
+                        {t('modal.sales.clear')}
                       </button>
                       <button
                         type="submit"
@@ -250,10 +253,10 @@ const SalesModal = () => {
                         {loading ? (
                           <>
                             <Loader className="w-5 h-5 animate-spin inline mr-2" />
-                            Submitting...
+                            {t('modal.sales.submitting')}
                           </>
                         ) : (
-                          'Submit Request'
+                          t('modal.sales.submit')
                         )}
                       </button>
                     </div>
