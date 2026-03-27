@@ -2,6 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
+const SUPPORT_EMAIL = 'support@dazzlingxchange.com';
+const SUPPORT_PHONE_TEL = '+6581584855';
+const SUPPORT_PHONE_DISPLAY = '+6581584855';
+
 function Footer() {
   const { t } = useTranslation();
 
@@ -35,15 +39,17 @@ function Footer() {
           {/* Column 2: Contact Us */}
           <div>
             <h4 className="text-[#16d68f] font-semibold mb-4">{t('footer.contact')}</h4>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               <li>
-                <a href="mailto:hello@dazzlingxchange.com" className="footer-link">
-                  {t('footer.email')}
+                <span className="text-gray-500 text-sm block">{t('footer.email')}</span>
+                <a href={`mailto:${SUPPORT_EMAIL}`} className="footer-link break-all">
+                  {SUPPORT_EMAIL}
                 </a>
               </li>
               <li>
-                <a href="tel:+6565551234" className="footer-link">
-                  {t('footer.phone')}
+                <span className="text-gray-500 text-sm block">{t('footer.phone')}</span>
+                <a href={`tel:${SUPPORT_PHONE_TEL}`} className="footer-link">
+                  {SUPPORT_PHONE_DISPLAY}
                 </a>
               </li>
             </ul>
