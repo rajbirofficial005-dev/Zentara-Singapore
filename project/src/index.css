@@ -365,13 +365,15 @@ p {
     margin-left: calc(-50vw + 50%);
   }
   
+  /* Track: one loop = width of a single duplicated set (must match Home.tsx testimonial count) */
   .testimonial-scroll-track {
     display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
     gap: 2rem;
-    animation: scroll-testimonials 45s linear infinite;
+    animation: scroll-testimonials 72s linear infinite;
     will-change: transform;
     padding-left: 2rem;
-    /* Animation handles all transforms */
   }
   
   /* Smooth hover pause effect */
@@ -389,8 +391,8 @@ p {
       transform: translateX(0);
     }
     100% {
-      /* Move left by width of 5 cards + gaps */
-      transform: translateX(calc(-350px * 5 - 2rem * 4));
+      /* 8 cards × (card + gap) — matches one copy in allTestimonials */
+      transform: translateX(calc((350px + 2rem) * -8));
     }
   }
   
@@ -445,7 +447,7 @@ p {
     }
     
     .testimonial-scroll-track {
-      animation: scroll-testimonials-desktop 45s linear infinite;
+      animation: scroll-testimonials-desktop 72s linear infinite;
     }
     
     /* Desktop hover pause */
@@ -461,8 +463,7 @@ p {
       transform: translateX(0);
     }
     100% {
-      /* Move left by width of 5 cards + gaps */
-      transform: translateX(calc(-350px * 5 - 2rem * 4));
+      transform: translateX(calc((350px + 2rem) * -8));
     }
   }
   
@@ -485,7 +486,7 @@ p {
     }
     
     .testimonial-scroll-track {
-      animation: scroll-testimonials-tablet 40s linear infinite;
+      animation: scroll-testimonials-tablet 64s linear infinite;
     }
     
     /* Tablet hover pause */
@@ -501,8 +502,7 @@ p {
       transform: translateX(0);
     }
     100% {
-      /* Move left by width of 5 cards + gaps */
-      transform: translateX(calc(-300px * 5 - 2rem * 4));
+      transform: translateX(calc((300px + 2rem) * -8));
     }
   }
   
@@ -525,7 +525,7 @@ p {
     }
     
     .testimonial-scroll-track {
-      animation: scroll-testimonials-mobile 35s linear infinite;
+      animation: scroll-testimonials-mobile 56s linear infinite;
     }
     
     /* Mobile hover pause */
@@ -541,8 +541,7 @@ p {
       transform: translateX(0);
     }
     100% {
-      /* Move left by width of 5 cards + gaps */
-      transform: translateX(calc(-280px * 5 - 2rem * 4));
+      transform: translateX(calc((280px + 2rem) * -8));
     }
   }
   

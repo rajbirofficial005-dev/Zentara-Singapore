@@ -49,6 +49,7 @@ function Home() {
     ][i],
   }));
 
+  /* Six copies for infinite scroll; index.css marquee translate must match testimonials.length (8) */
   const allTestimonials = [
     ...testimonials.map((t, i) => ({ ...t, id: `a-${i}` })),
     ...testimonials.map((t, i) => ({ ...t, id: `b-${i}` })),
@@ -342,13 +343,13 @@ function Home() {
           <div className="testimonial-scroll-container">
             <div className="testimonial-scroll-track">
               {allTestimonials.map((testimonial) => (
-                <div key={testimonial.id} className="testimonial-card">
+                <div key={testimonial.id} className="testimonial-card flex flex-col">
                   <img src={testimonial.image} alt={testimonial.name}
-                    className="w-16 h-16 rounded-full object-cover object-center mb-5 border-2 border-primary/30 mx-auto" />
-                  <p className="text-neutral-300 text-base leading-relaxed mb-5 text-center italic">
+                    className="w-16 h-16 shrink-0 rounded-full object-cover object-center mb-5 border-2 border-primary/30 mx-auto" />
+                  <p className="text-neutral-300 text-base leading-relaxed mb-5 flex-1 text-center italic min-h-0">
                     "{testimonial.text}"
                   </p>
-                  <h4 className="text-white text-sm font-semibold text-center">{testimonial.name}</h4>
+                  <h4 className="text-white text-sm font-semibold text-center shrink-0 mt-auto">{testimonial.name}</h4>
                 </div>
               ))}
             </div>
