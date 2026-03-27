@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Home, UserCircle, Briefcase, BookOpen, Settings } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { SHOW_ARTICLES_IN_NAV } from '../config/navigation';
 
 interface NavRailProps {
   onOpenSettings: () => void;
@@ -15,12 +16,16 @@ interface NavItem {
   title: string;
 }
 
-const navItems: NavItem[] = [
+const navItemsAll: NavItem[] = [
   { path: '/', icon: Home, label: 'nav.home', title: 'nav.home' },
   { path: '/services', icon: Briefcase, label: 'nav.services', title: 'nav.services' },
   { path: '/about', icon: UserCircle, label: 'nav.about', title: 'nav.about' },
-  { path: '/articles', icon: BookOpen, label: 'nav.articles', title: 'nav.articles' }
+  { path: '/articles', icon: BookOpen, label: 'nav.articles', title: 'nav.articles' },
 ];
+
+const navItems = SHOW_ARTICLES_IN_NAV
+  ? navItemsAll
+  : navItemsAll.filter((item) => item.path !== '/articles');
 
 const NavRail: React.FC<NavRailProps> = React.memo(({ onOpenSettings }) => {
   const location = useLocation();

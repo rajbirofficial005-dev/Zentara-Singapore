@@ -33,15 +33,19 @@ function Home() {
     desc: t(`home.steps.${i}.desc`),
   }));
 
-  const testimonials = Array.from({ length: 5 }, (_, i) => ({
+  const testimonials = Array.from({ length: 8 }, (_, i) => ({
     name: t(`home.testimonials.${i}.name`),
     text: t(`home.testimonials.${i}.text`),
     image: [
-      'https://randomuser.me/api/portraits/women/44.jpg',
-      'https://randomuser.me/api/portraits/men/32.jpg',
-      'https://randomuser.me/api/portraits/women/68.jpg',
-      'https://randomuser.me/api/portraits/men/65.jpg',
-      'https://randomuser.me/api/portraits/women/12.jpg',
+      'https://res.cloudinary.com/dtnor59fk/image/upload/c_fill,g_face,w_400,h_400,q_auto,f_auto/v1774607812/WhatsApp_Image_2026-03-27_at_9.34.10_AM_1_dnftfi.jpg',
+      // Real customer — face-centered crop for circular avatar
+      'https://res.cloudinary.com/dtnor59fk/image/upload/c_fill,g_face,w_400,h_400,q_auto,f_auto/v1774606766/WhatsApp_Image_2026-03-27_at_9.34.09_AM_bdfvin.jpg',
+      'https://res.cloudinary.com/dtnor59fk/image/upload/c_fill,g_face,w_400,h_400,q_auto,f_auto/v1774607145/WhatsApp_Image_2026-03-27_at_9.34.10_AM_u3mync.jpg',
+      'https://res.cloudinary.com/dtnor59fk/image/upload/c_fill,g_face,w_400,h_400,q_auto,f_auto/v1774607035/WhatsApp_Image_2026-03-27_at_9.34.09_AM_1_if6vnc.jpg',
+      'https://res.cloudinary.com/dtnor59fk/image/upload/c_fill,g_face,w_400,h_400,q_auto,f_auto/v1774607922/WhatsApp_Image_2026-03-27_at_9.34.10_AM_2_mvblr3.jpg',
+      'https://res.cloudinary.com/dtnor59fk/image/upload/c_fill,g_face,w_400,h_400,q_auto,f_auto/v1774608349/WhatsApp_Image_2026-03-27_at_9.34.11_AM_xmstab.jpg',
+      'https://res.cloudinary.com/dtnor59fk/image/upload/c_fill,g_face,w_400,h_400,q_auto,f_auto/v1774608667/WhatsApp_Image_2026-03-27_at_9.34.11_AM_1_hbnljd.jpg',
+      'https://res.cloudinary.com/dtnor59fk/image/upload/c_fill,g_face,w_400,h_400,q_auto,f_auto/v1774608789/WhatsApp_Image_2026-03-27_at_9.34.11_AM_2_e4pxeg.jpg',
     ][i],
   }));
 
@@ -340,7 +344,7 @@ function Home() {
               {allTestimonials.map((testimonial) => (
                 <div key={testimonial.id} className="testimonial-card">
                   <img src={testimonial.image} alt={testimonial.name}
-                    className="w-14 h-14 rounded-full object-cover mb-5 border-2 border-primary/30 mx-auto" />
+                    className="w-16 h-16 rounded-full object-cover object-center mb-5 border-2 border-primary/30 mx-auto" />
                   <p className="text-neutral-300 text-base leading-relaxed mb-5 text-center italic">
                     "{testimonial.text}"
                   </p>

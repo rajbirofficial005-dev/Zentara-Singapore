@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Sidebar, SidebarBody, SidebarLink } from './ui/sidebar';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { SHOW_ARTICLES_IN_NAV } from '../config/navigation';
 
 interface SidebarProps {
   onOpenSettings: () => void;
@@ -75,20 +76,24 @@ function SidebarComponent({ onOpenSettings }: SidebarProps) {
           />
         ),
       },
-      {
-        label: t('nav.articles'),
-        href: '/articles',
-        icon: (
-          <BookOpen
-            className={cn(
-              'w-8 h-8 transition-colors duration-200',
-              isActive('/articles') || location.pathname.startsWith('/articles/')
-                ? 'text-[#16d68f]'
-                : 'text-white group-hover/sidebar:text-[#16d68f]'
-            )}
-          />
-        ),
-      },
+      ...(SHOW_ARTICLES_IN_NAV
+        ? [
+            {
+              label: t('nav.articles'),
+              href: '/articles',
+              icon: (
+                <BookOpen
+                  className={cn(
+                    'w-8 h-8 transition-colors duration-200',
+                    isActive('/articles') || location.pathname.startsWith('/articles/')
+                      ? 'text-[#16d68f]'
+                      : 'text-white group-hover/sidebar:text-[#16d68f]'
+                  )}
+                />
+              ),
+            },
+          ]
+        : []),
     ],
     [t, location.pathname]
   );
