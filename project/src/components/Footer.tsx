@@ -41,14 +41,17 @@ function Footer() {
             <h4 className="text-[#16d68f] font-semibold mb-4">{t('footer.contact')}</h4>
             <ul className="space-y-3">
               <li>
-                <span className="text-gray-500 text-sm block">{t('footer.email')}</span>
-                <a href={`mailto:${SUPPORT_EMAIL}`} className="footer-link break-all">
+                <a
+                  href={`mailto:${SUPPORT_EMAIL}`}
+                  className="footer-link block break-all"
+                >
+                  <span className="text-gray-500 text-sm block">{t('footer.email')}</span>
                   {SUPPORT_EMAIL}
                 </a>
               </li>
               <li>
-                <span className="text-gray-500 text-sm block">{t('footer.phone')}</span>
-                <a href={`tel:${SUPPORT_PHONE_TEL}`} className="footer-link">
+                <a href={`tel:${SUPPORT_PHONE_TEL}`} className="footer-link block">
+                  <span className="text-gray-500 text-sm block">{t('footer.phone')}</span>
                   {SUPPORT_PHONE_DISPLAY}
                 </a>
               </li>
