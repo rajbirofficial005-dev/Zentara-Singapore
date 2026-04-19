@@ -124,8 +124,8 @@ export const MobileSidebar = ({
       >
         <Link to="/" className="flex items-center shrink-0">
           <img 
-            src="https://i.ibb.co/VcB3xpz1/Untitled-design-2025-07-02-T031441-104.png" 
-            alt="Dazzling Xchange" 
+            src="/zentara-logo.png" 
+            alt="Zentara" 
             className="w-10 h-10 object-contain"
           />
         </Link>

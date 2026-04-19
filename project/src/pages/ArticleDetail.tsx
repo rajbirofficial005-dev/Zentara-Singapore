@@ -498,7 +498,7 @@ function ArticleDetail() {
                     More Guides
                   </Link>
                   <button
-                    onClick={() => window.open('https://customer.dazzlingxchange.com/', '_blank')}
+                    onClick={() => window.open('https://customer.zentara.com/', '_blank')}
                     className="inline-flex items-center px-6 py-3 bg-primary text-neutral-900 rounded-full font-medium font-primary hover:bg-accent transition-all duration-200 hover:scale-105"
                   >
                     Get Started

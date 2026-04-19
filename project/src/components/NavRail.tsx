@@ -159,8 +159,8 @@ const NavRail: React.FC<NavRailProps> = React.memo(({ onOpenSettings }) => {
             aria-label={t('nav.logoAria')}
           >
             <img 
-              src="https://i.ibb.co/VcB3xpz1/Untitled-design-2025-07-02-T031441-104.png" 
-              alt="Dazzling Xchange Logo" 
+              src="/zentara-logo.png" 
+              alt="Zentara Logo" 
               className="w-10 h-10 object-contain group-hover:scale-105 transition-transform duration-200"
             />
           </Link>

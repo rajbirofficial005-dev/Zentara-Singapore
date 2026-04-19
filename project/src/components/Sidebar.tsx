@@ -142,8 +142,8 @@ const Logo = () => {
       className="font-normal flex space-x-3 items-center text-sm text-white py-1 relative z-20"
     >
       <img 
-        src="https://i.ibb.co/VcB3xpz1/Untitled-design-2025-07-02-T031441-104.png" 
-        alt="Dazzling Xchange Logo" 
+        src="/zentara-logo.png" 
+        alt="Zentara Logo" 
         className="w-14 h-14 object-contain flex-shrink-0"
       />
       <motion.span
@@ -151,7 +151,7 @@ const Logo = () => {
         animate={{ opacity: 1 }}
         className="font-medium text-white whitespace-pre text-lg"
       >
-        Dazzling Xchange
+        Zentara
       </motion.span>
     </Link>
   );
@@ -164,8 +164,8 @@ const LogoIcon = () => {
       className="font-normal flex space-x-2 items-center text-sm text-white py-1 relative z-20"
     >
       <img 
-        src="https://i.ibb.co/VcB3xpz1/Untitled-design-2025-07-02-T031441-104.png" 
-        alt="Dazzling Xchange Logo" 
+        src="/zentara-logo.png" 
+        alt="Zentara Logo" 
         className="w-14 h-14 object-contain flex-shrink-0"
       />
     </Link>

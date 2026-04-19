@@ -1,7 +1,7 @@
 # 🎯 Project Refactoring Summary Report
 
 ## 📊 Overview
-**Project:** Dazzling Xchange Frontend (React + Firebase)
+**Project:** Zentara Frontend (React + Firebase)
 **Refactoring Date:** January 2025
 **Status:** ✅ COMPLETED SUCCESSFULLY
 

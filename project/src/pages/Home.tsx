@@ -33,31 +33,7 @@ function Home() {
     desc: t(`home.steps.${i}.desc`),
   }));
 
-  const testimonials = Array.from({ length: 8 }, (_, i) => ({
-    name: t(`home.testimonials.${i}.name`),
-    text: t(`home.testimonials.${i}.text`),
-    image: [
-      'https://res.cloudinary.com/dtnor59fk/image/upload/c_fill,g_face,w_400,h_400,q_auto,f_auto/v1774607812/WhatsApp_Image_2026-03-27_at_9.34.10_AM_1_dnftfi.jpg',
-      // Real customer — face-centered crop for circular avatar
-      'https://res.cloudinary.com/dtnor59fk/image/upload/c_fill,g_face,w_400,h_400,q_auto,f_auto/v1774606766/WhatsApp_Image_2026-03-27_at_9.34.09_AM_bdfvin.jpg',
-      'https://res.cloudinary.com/dtnor59fk/image/upload/c_fill,g_face,w_400,h_400,q_auto,f_auto/v1774607145/WhatsApp_Image_2026-03-27_at_9.34.10_AM_u3mync.jpg',
-      'https://res.cloudinary.com/dtnor59fk/image/upload/c_fill,g_face,w_400,h_400,q_auto,f_auto/v1774607035/WhatsApp_Image_2026-03-27_at_9.34.09_AM_1_if6vnc.jpg',
-      'https://res.cloudinary.com/dtnor59fk/image/upload/c_fill,g_face,w_400,h_400,q_auto,f_auto/v1774607922/WhatsApp_Image_2026-03-27_at_9.34.10_AM_2_mvblr3.jpg',
-      'https://res.cloudinary.com/dtnor59fk/image/upload/c_fill,g_face,w_400,h_400,q_auto,f_auto/v1774608349/WhatsApp_Image_2026-03-27_at_9.34.11_AM_xmstab.jpg',
-      'https://res.cloudinary.com/dtnor59fk/image/upload/c_fill,g_face,w_400,h_400,q_auto,f_auto/v1774608667/WhatsApp_Image_2026-03-27_at_9.34.11_AM_1_hbnljd.jpg',
-      'https://res.cloudinary.com/dtnor59fk/image/upload/c_fill,g_face,w_400,h_400,q_auto,f_auto/v1774608789/WhatsApp_Image_2026-03-27_at_9.34.11_AM_2_e4pxeg.jpg',
-    ][i],
-  }));
 
-  /* Six copies for infinite scroll; index.css marquee translate must match testimonials.length (8) */
-  const allTestimonials = [
-    ...testimonials.map((t, i) => ({ ...t, id: `a-${i}` })),
-    ...testimonials.map((t, i) => ({ ...t, id: `b-${i}` })),
-    ...testimonials.map((t, i) => ({ ...t, id: `c-${i}` })),
-    ...testimonials.map((t, i) => ({ ...t, id: `d-${i}` })),
-    ...testimonials.map((t, i) => ({ ...t, id: `e-${i}` })),
-    ...testimonials.map((t, i) => ({ ...t, id: `f-${i}` })),
-  ];
 
   return (
     <>
@@ -92,7 +68,7 @@ function Home() {
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.6 }}
             >
               <button
-                onClick={() => window.open('https://customer.dazzlingxchange.com/', '_blank')}
+                onClick={() => window.open('https://customer.zentara.com/', '_blank')}
                 className="group flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-primary text-neutral-950 rounded-full font-semibold text-sm sm:text-base hover:shadow-[0_0_30px_rgba(0,208,132,0.4)] transition-all duration-300 hover:scale-[1.02] w-full sm:w-auto"
               >
                 {t('hero.login')}
@@ -330,32 +306,6 @@ function Home() {
         </motion.div>
       </section>
 
-      {/* ─── TESTIMONIALS ─── */}
-      <section className="py-20 overflow-hidden">
-        <motion.h2
-          className="text-3xl lg:text-4xl font-bold text-white mb-16 px-6 lg:px-16 container mx-auto"
-          initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-        >
-          {t('home.testimonials.title')} <span className="gradient-text">{t('home.testimonials.titleHighlight')}</span>
-        </motion.h2>
-
-        <div className="testimonial-carousel-wrapper">
-          <div className="testimonial-scroll-container">
-            <div className="testimonial-scroll-track">
-              {allTestimonials.map((testimonial) => (
-                <div key={testimonial.id} className="testimonial-card flex flex-col">
-                  <img src={testimonial.image} alt={testimonial.name}
-                    className="w-16 h-16 shrink-0 rounded-full object-cover object-center mb-5 border-2 border-primary/30 mx-auto" />
-                  <p className="text-neutral-300 text-base leading-relaxed mb-5 flex-1 text-center italic min-h-0">
-                    "{testimonial.text}"
-                  </p>
-                  <h4 className="text-white text-sm font-semibold text-center shrink-0 mt-auto">{testimonial.name}</h4>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ─── FINAL CTA ─── */}
       <section className="py-16 sm:py-32 px-4 sm:px-6 lg:px-16 relative overflow-hidden">
@@ -374,7 +324,7 @@ function Home() {
           </motion.p>
           <motion.div variants={fadeUp} custom={2} className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 mt-10">
             <button
-              onClick={() => window.open('https://customer.dazzlingxchange.com/', '_blank')}
+              onClick={() => window.open('https://customer.zentara.com/', '_blank')}
               className="group flex items-center justify-center gap-2 px-8 sm:px-10 py-4 sm:py-5 bg-primary text-neutral-950 rounded-full font-semibold text-base sm:text-lg hover:shadow-[0_0_40px_rgba(0,208,132,0.4)] transition-all duration-300 hover:scale-[1.02] w-full sm:w-auto"
             >
               {t('home.cta.portal')}

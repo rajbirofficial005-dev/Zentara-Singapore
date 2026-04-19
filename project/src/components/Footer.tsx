@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-const SUPPORT_EMAIL = 'support@dazzlingxchange.com';
+const SUPPORT_EMAIL = 'support@zentara.com';
 const SUPPORT_PHONE_TEL = '+6581584855';
 const SUPPORT_PHONE_DISPLAY = '+6581584855';
 
