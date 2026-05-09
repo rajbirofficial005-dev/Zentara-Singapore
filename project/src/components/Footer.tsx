@@ -90,10 +90,18 @@ function Footer() {
 
           {/* Right: Terms & Privacy */}
           <div className="flex items-start justify-start lg:justify-end space-x-8">
-            <Link to="/terms" className="footer-link text-sm">
+            <Link
+              to="/terms"
+              className="footer-link text-sm"
+              onClick={() => window.scrollTo(0, 0)}
+            >
               {t('footer.terms')}
             </Link>
-            <Link to="/privacy" className="footer-link text-sm">
+            <Link
+              to="/privacy"
+              className="footer-link text-sm"
+              onClick={() => window.scrollTo(0, 0)}
+            >
               {t('footer.privacy')}
             </Link>
           </div>

@@ -138,9 +138,9 @@ function Home() {
                       <div className="absolute inset-0 bg-primary/5 rounded-3xl blur-2xl group-hover:bg-primary/10 transition-all duration-500 pointer-events-none" />
                       {i === 0 ? (
                         <LightboxImage
-                          src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773818413/41a19b60-f520-4c1b-90dc-0b3b1629e0bd.png"
+                          src="/images/register-in-minutes-mobile.png"
                           alt="Register in Minutes"
-                          className="w-full h-auto object-contain rounded-2xl"
+                          className="w-full max-w-[340px] mx-auto h-auto object-contain rounded-2xl"
                         />
                       ) : i === 1 ? (
                         <LightboxImage
@@ -150,15 +150,15 @@ function Home() {
                         />
                       ) : i === 2 ? (
                         <LightboxImage
-                          src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773820025/247f91f5-cbf9-4ee7-a89a-2214001d52b7.png"
+                          src="/images/unlock-wallet-login.png"
                           alt="Unlock Your Wallet"
                           className="w-full h-auto object-contain rounded-2xl"
                         />
                       ) : (
                         <LightboxImage
-                          src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773820163/96b743e4-fec7-444e-8c13-480035054509.png"
+                          src="/images/send-money-step-04.png"
                           alt="Send Money Globally"
-                          className="w-full h-auto object-contain rounded-2xl"
+                          className="w-full max-w-[420px] mx-auto h-auto object-contain rounded-2xl"
                         />
                       )}
                     </div>

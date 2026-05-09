@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, FileText, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -6,12 +6,27 @@ import { useTranslation } from 'react-i18next';
 import Footer from '../components/Footer';
 
 function TermsOfUse() {
+  if (typeof window !== 'undefined') {
+    window.scrollTo(0, 0);
+  }
+
   const { t } = useTranslation();
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    window.scrollTo(0, 0);
+
+    if (containerRef.current) {
+      containerRef.current.scrollTop = 0;
+    }
+  }, []);
 
   const sections = [1, 2, 3, 4, 5, 6] as const;
 
   return (
-    <div className="bg-neutral-950 min-h-screen">
+    <div ref={containerRef} className="bg-neutral-950 min-h-screen">
       <div className="max-w-4xl mx-auto px-6 py-20 lg:px-24">
         <motion.div
           className="mb-12"
@@ -19,6 +34,10 @@ function TermsOfUse() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
+          <p className="text-[#A0A0A0] text-sm font-normal font-primary mb-4">
+            ZENTARA - Powered by DAZZLINGXCHANGE
+          </p>
+
           <Link
             to="/"
             className="inline-flex items-center text-primary hover:text-accent transition-colors duration-200 mb-8 group"

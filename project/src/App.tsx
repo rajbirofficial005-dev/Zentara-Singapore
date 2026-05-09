@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import SettingsModal from './components/SettingsModal';
 import Home from './pages/Home';
@@ -12,14 +12,32 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import PortalWalkthrough from './pages/PortalWalkthrough';
 import SalesModal from './components/SalesModal';
 
+function RouteScrollReset({ mainRef }: { mainRef: React.RefObject<HTMLElement> }) {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    window.scrollTo(0, 0);
+
+    if (mainRef.current) {
+      mainRef.current.scrollTop = 0;
+    }
+  }, [pathname, mainRef]);
+
+  return null;
+}
+
 function App() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const mainRef = useRef<HTMLElement>(null);
 
   const openSettings = () => setIsSettingsOpen(true);
   const closeSettings = () => setIsSettingsOpen(false);
 
   return (
     <Router>
+      <RouteScrollReset mainRef={mainRef} />
       <div className="min-h-screen bg-black w-full overflow-x-hidden min-w-[280px] font-primary flex flex-col md:flex-row m-0 p-0">
         {/* Sidebar Component — top bar on mobile, left rail on desktop */}
         <div className="shrink-0 w-full md:w-auto">
@@ -27,7 +45,10 @@ function App() {
         </div>
         
         {/* Main Content — padding for mobile top bar, offset by sidebar on desktop */}
-        <main className="flex-1 w-full max-w-full overflow-x-hidden bg-black pt-16 md:pt-0 md:ml-[60px]">
+        <main
+          ref={mainRef}
+          className="flex-1 w-full max-w-full overflow-x-hidden bg-black pt-16 md:pt-0 md:ml-[60px]"
+        >
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
