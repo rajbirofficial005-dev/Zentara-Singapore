@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Shield, Zap, Users, Eye, Send, Wallet, UserPlus, ScanFace, ChevronRight } from 'lucide-react';
 import Footer from '../components/Footer';
 import LightboxImage from '../components/LightboxImage';
+import ComingSoonModal from '../components/ComingSoonModal';
 import { useSalesModalStore } from '../stores/salesModalStore';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
@@ -23,6 +24,7 @@ function Home() {
   const { t } = useTranslation();
   const openSalesModal = useSalesModalStore((state) => state.openModal);
   const { ref: statsRef, inView: statsInView } = useInView({ threshold: 0.3, triggerOnce: true });
+  const [isComingSoonOpen, setIsComingSoonOpen] = useState(false);
 
   const marqueeItems = Array.from({ length: 12 }, (_, i) => t(`home.marquee.${i}`));
 
@@ -68,7 +70,7 @@ function Home() {
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.6 }}
             >
               <button
-                onClick={() => window.open('https://customer.zentara.com/', '_blank')}
+                onClick={() => setIsComingSoonOpen(true)}
                 className="group flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-primary text-neutral-950 rounded-full font-semibold text-sm sm:text-base hover:shadow-[0_0_30px_rgba(0,208,132,0.4)] transition-all duration-300 hover:scale-[1.02] w-full sm:w-auto"
               >
                 {t('hero.login')}
@@ -324,7 +326,7 @@ function Home() {
           </motion.p>
           <motion.div variants={fadeUp} custom={2} className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 mt-10">
             <button
-              onClick={() => window.open('https://customer.zentara.com/', '_blank')}
+              onClick={() => setIsComingSoonOpen(true)}
               className="group flex items-center justify-center gap-2 px-8 sm:px-10 py-4 sm:py-5 bg-primary text-neutral-950 rounded-full font-semibold text-base sm:text-lg hover:shadow-[0_0_40px_rgba(0,208,132,0.4)] transition-all duration-300 hover:scale-[1.02] w-full sm:w-auto"
             >
               {t('home.cta.portal')}
@@ -341,6 +343,7 @@ function Home() {
       </section>
 
       <Footer />
+      <ComingSoonModal isOpen={isComingSoonOpen} onClose={() => setIsComingSoonOpen(false)} />
     </>
   );
 }

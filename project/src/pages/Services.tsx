@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, CheckCircle2, Smartphone, ScanFace, Wallet, Send, BarChart3, Users, Building, CreditCard, ChevronDown } from 'lucide-react';
 import Footer from '../components/Footer';
 import LightboxImage from '../components/LightboxImage';
+import ComingSoonModal from '../components/ComingSoonModal';
 import { useSalesModalStore } from '../stores/salesModalStore';
 
 const fadeUp = {
@@ -20,6 +21,7 @@ function Services() {
   const { t } = useTranslation();
   const openSalesModal = useSalesModalStore((state) => state.openModal);
   const [activePayment, setActivePayment] = useState<'bank' | 'wallet'>('bank');
+  const [isComingSoonOpen, setIsComingSoonOpen] = useState(false);
 
   const paymentMethods = {
     bank: {
@@ -314,7 +316,7 @@ function Services() {
           </motion.p>
           <motion.div variants={fadeUp} custom={2} className="flex flex-wrap justify-center gap-4 mt-10">
             <button
-              onClick={() => window.open('https://customer.zentara.com/', '_blank')}
+              onClick={() => setIsComingSoonOpen(true)}
               className="group flex items-center gap-2 px-10 py-5 bg-primary text-neutral-950 rounded-full font-semibold text-lg hover:shadow-[0_0_40px_rgba(0,208,132,0.4)] transition-all duration-300 hover:scale-[1.02]"
             >
               {t('services.cta.portal')}
@@ -331,6 +333,7 @@ function Services() {
       </section>
 
       <Footer />
+      <ComingSoonModal isOpen={isComingSoonOpen} onClose={() => setIsComingSoonOpen(false)} />
     </div>
   );
 }
