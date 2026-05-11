@@ -70,6 +70,22 @@ body::-webkit-scrollbar {
 @tailwind components;
 @tailwind utilities;
 
+/* Phone frame for walkthrough screenshots */
+.phone-frame {
+  width: 260px;
+  margin: 0 auto;
+  border-radius: 36px;
+  border: 8px solid #2a2a2a;
+  box-shadow: 0 0 0 2px #444, 0 40px 80px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  transform: perspective(1000px) rotateY(-12deg) rotateX(4deg);
+  transform-origin: left center;
+  transition: transform 0.4s ease;
+}
+.phone-frame:hover {
+  transform: perspective(1000px) rotateY(-6deg) rotateX(2deg);
+}
+
 /* Full-Viewport Radial Gradient Background */
 body {
   background: radial-gradient(

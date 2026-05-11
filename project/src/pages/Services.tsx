@@ -102,15 +102,18 @@ function Services() {
 
             {/* Right — Image */}
             <motion.div
-              className="relative self-start pt-8 lg:pt-16"
+              className="relative self-start pt-8 lg:pt-16 flex justify-center"
+              style={{ maxWidth: 380 }}
               initial={{ opacity: 0, y: 60 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             >
-              <LightboxImage
-                src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773821782/2b37e940-9f0d-4e87-8da7-28d23fcb6595.png"
-                alt="Our Services"
-                className="w-full h-auto object-contain rounded-2xl"
-              />
+              <div className="phone-frame">
+                <LightboxImage
+                  src="/images/walkthrough/head.jpeg"
+                  alt="Our Services"
+                  className="w-full h-auto object-contain"
+                />
+              </div>
             </motion.div>
           </div>
         </div>

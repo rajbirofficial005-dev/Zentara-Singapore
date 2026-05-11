@@ -77,15 +77,18 @@ function PortalWalkthrough() {
 
             {/* Right — Image */}
             <motion.div
-              className="relative self-start pt-8 lg:pt-16"
+              className="relative self-start pt-8 lg:pt-16 flex justify-center"
+              style={{ maxWidth: 380 }}
               initial={{ opacity: 0, y: 60 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             >
-              <LightboxImage
-                src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773828707/1d1fe6b4-0387-400e-90d7-bb677e79578f.png"
-                alt={t('walkthrough.hero.imageAlt')}
-                className="w-full h-auto object-contain rounded-2xl"
-              />
+              <div className="phone-frame">
+                <LightboxImage
+                  src="/images/walkthrough/00.jpeg"
+                  alt={t('walkthrough.hero.imageAlt')}
+                  className="w-full h-auto object-contain"
+                />
+              </div>
             </motion.div>
           </div>
         </div>
@@ -134,13 +137,14 @@ function PortalWalkthrough() {
                     </motion.div>
 
                     <motion.div
-                      className="flex-1 min-w-0"
+                      className="flex-1 min-w-0 flex justify-center"
+                      style={(idx === 3 || idx === 5) ? { maxWidth: 380 } : undefined}
                       initial="hidden" whileInView="visible" viewport={{ once: true }}
                     >
-                      <motion.div variants={fadeUp} custom={2}>
+                      <motion.div variants={fadeUp} custom={2} className="w-full">
                         {idx === 0 ? (
                           <LightboxImage
-                            src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773829022/e7d1e93c-3b3d-4831-a6ce-2f38deb547c4.png"
+                            src="/images/walkthrough/01.jpeg"
                             alt={step.title}
                             className="w-full h-auto object-contain rounded-2xl"
                           />
@@ -152,16 +156,18 @@ function PortalWalkthrough() {
                           />
                         ) : idx === 2 ? (
                           <LightboxImage
-                            src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773830512/977f4651-0cb4-4d76-a855-4247155c5566.png"
+                            src="/images/walkthrough/03.jpeg"
                             alt={step.title}
                             className="w-full h-auto object-contain rounded-2xl"
                           />
                         ) : idx === 3 ? (
-                          <LightboxImage
-                            src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773830768/7f5340f2-ba9c-4cc9-a269-edc5f5713114.png"
-                            alt={step.title}
-                            className="w-full h-auto object-contain rounded-2xl"
-                          />
+                          <div className="phone-frame">
+                            <LightboxImage
+                              src="/images/walkthrough/04.jpeg"
+                              alt={step.title}
+                              className="w-full h-auto object-contain"
+                            />
+                          </div>
                         ) : idx === 4 ? (
                           <LightboxImage
                             src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773830998/6b22a935-3480-4db0-a652-c31f8e253a10.png"
@@ -169,11 +175,13 @@ function PortalWalkthrough() {
                             className="w-full h-auto object-contain rounded-2xl"
                           />
                         ) : idx === 5 ? (
-                          <LightboxImage
-                            src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773831232/a30b7491-49aa-4a98-a0f6-5b8558a24004.png"
-                            alt={step.title}
-                            className="w-full h-auto object-contain rounded-2xl"
-                          />
+                          <div className="phone-frame">
+                            <LightboxImage
+                              src="/images/walkthrough/06.jpeg"
+                              alt={step.title}
+                              className="w-full h-auto object-contain"
+                            />
+                          </div>
                         ) : idx === 6 ? (
                           <LightboxImage
                             src="https://res.cloudinary.com/dtnor59fk/image/upload/v1773831488/a802cae2-ebaf-4a97-8f7c-8ba787726e0b.png"
