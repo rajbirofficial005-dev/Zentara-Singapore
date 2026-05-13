@@ -48,7 +48,7 @@ function Home() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-16 py-12 sm:py-20 relative z-10">
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-8">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight gradient-text mb-4 sm:mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight gradient-text mb-4 sm:mb-6">
                 {t('home.brand')}
               </h2>
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.05] tracking-tight">
